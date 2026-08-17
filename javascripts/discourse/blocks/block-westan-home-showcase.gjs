@@ -1,24 +1,25 @@
 import Component from "@glimmer/component";
-import { block } from "discourse/blocks";
+import { service } from "@ember/service";
 import AsyncContent from "discourse/components/async-content";
 import icon from "discourse/helpers/d-icon";
 import { ajax } from "discourse/lib/ajax";
 import { bind } from "discourse/lib/decorators";
 import { i18n } from "discourse-i18n";
 
-@block("theme:westan-horizon:home-showcase", {
-  description: "Westan Critic and weekly ranking highlights",
-  allowedOutlets: ["homepage-blocks"],
-  args: {
-    quickLinksJson: { type: "string", default: "[]" },
-    criticUrl: { type: "string", required: true },
-    rankingUrl: { type: "string", required: true },
-  },
-})
 export default class BlockWestanHomeShowcase extends Component {
+  @service router;
+
+  get isHomepage() {
+    // Reading currentURL keeps this getter reactive during client-side
+    // navigation; pathname distinguishes `/` from the separate `/latest` page.
+    return Boolean(this.router.currentURL) && window.location.pathname === "/";
+  }
+
   get quickLinks() {
     try {
-      const links = JSON.parse(this.args.quickLinksJson || "[]");
+      const links = Array.isArray(settings.quick_links)
+        ? settings.quick_links
+        : JSON.parse(settings.quick_links || "[]");
       return Array.isArray(links)
         ? links.filter((link) => link?.label?.trim() && link?.url?.trim())
         : [];
@@ -29,6 +30,14 @@ export default class BlockWestanHomeShowcase extends Component {
 
   get hasQuickLinks() {
     return this.quickLinks.length > 0;
+  }
+
+  get criticUrl() {
+    return settings.critic_url || "/critic/recent";
+  }
+
+  get rankingUrl() {
+    return settings.ranking_url || "/ranking";
   }
 
   @bind
@@ -72,7 +81,8 @@ export default class BlockWestanHomeShowcase extends Component {
   }
 
   <template>
-    <section class="westan-home-showcase" aria-label="Destaques Westan">
+    {{#if this.isHomepage}}
+      <section class="westan-home-showcase" aria-label="Destaques Westan">
       {{#if this.hasQuickLinks}}
         <nav
           class="westan-home-shortcuts"
@@ -125,7 +135,7 @@ export default class BlockWestanHomeShowcase extends Component {
                   }}</p>
               {{/if}}
 
-              <a class="westan-home-card__cta" href={{@criticUrl}}>
+              <a class="westan-home-card__cta" href={{this.criticUrl}}>
                 {{i18n (themePrefix "common.check_all")}}
                 {{icon "arrow-right"}}
               </a>
@@ -158,7 +168,7 @@ export default class BlockWestanHomeShowcase extends Component {
                   }}</p>
               {{/if}}
 
-              <a class="westan-home-card__cta" href={{@rankingUrl}}>
+              <a class="westan-home-card__cta" href={{this.rankingUrl}}>
                 {{i18n (themePrefix "common.check_all")}}
                 {{icon "arrow-right"}}
               </a>
@@ -166,6 +176,7 @@ export default class BlockWestanHomeShowcase extends Component {
           </div>
         </:content>
       </AsyncContent>
-    </section>
+      </section>
+    {{/if}}
   </template>
 }
