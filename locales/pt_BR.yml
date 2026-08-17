@@ -1,0 +1,24 @@
+pt_BR:
+  quick_access:
+    label: "Acesso rápido"
+    recent: "Recentes"
+    hot: "Em alta"
+    categories: "Categorias"
+    rules: "Regras"
+  critic:
+    eyebrow: "Westan Critic"
+    title: "Avaliações recentes"
+    empty: "As avaliações mais recentes aparecerão aqui."
+  ranking:
+    eyebrow: "Ranking semanal"
+    title: "Top 3 da semana"
+    empty: "O ranking da semana aparecerá aqui."
+  common:
+    check_all: "Confira tudo"
+    loading: "Carregando destaques"
+  theme_metadata:
+    description: "Cabeçalho mobile e destaques dinâmicos do Westan Critic e Ranking para o Horizon."
+    settings:
+      quick_links: "Links de acesso rápido. Adicione, remova, edite ou reordene as opções exibidas na home."
+      critic_url: "Página completa do Westan Critic."
+      ranking_url: "Página completa do Ranking Westan."

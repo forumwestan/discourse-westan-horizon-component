@@ -1,0 +1,28 @@
+quick_links:
+  type: objects
+  default:
+    - label: "Recentes"
+      url: "/latest"
+    - label: "Em alta"
+      url: "/top"
+    - label: "Categorias"
+      url: "/categories"
+    - label: "Regras"
+      url: "/guidelines"
+  schema:
+    name: quick_link
+    properties:
+      label:
+        type: string
+        required: true
+      url:
+        type: string
+        required: true
+
+critic_url:
+  default: "/critic/recent"
+  type: string
+
+ranking_url:
+  default: "/ranking"
+  type: string

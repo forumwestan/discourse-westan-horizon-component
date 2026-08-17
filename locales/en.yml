@@ -1,0 +1,24 @@
+en:
+  quick_access:
+    label: "Quick access"
+    recent: "Recent"
+    hot: "Trending"
+    categories: "Categories"
+    rules: "Rules"
+  critic:
+    eyebrow: "Westan Critic"
+    title: "Recent reviews"
+    empty: "The latest reviews will appear here."
+  ranking:
+    eyebrow: "Weekly ranking"
+    title: "This week's top 3"
+    empty: "The weekly ranking will appear here."
+  common:
+    check_all: "See everything"
+    loading: "Loading highlights"
+  theme_metadata:
+    description: "Mobile header and dynamic Westan Critic and Ranking highlights for Horizon."
+    settings:
+      quick_links: "Quick access links. Add, remove, edit, or reorder the options shown on the homepage."
+      critic_url: "Full Westan Critic page."
+      ranking_url: "Full Westan Ranking page."

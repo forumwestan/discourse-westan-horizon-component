@@ -1,0 +1,11 @@
+{
+  "name": "Westan Horizon Home",
+  "component": true,
+  "authors": "Westan",
+  "about_url": "https://github.com/forumwestan/discourse-westan-horizon-component",
+  "license_url": "https://opensource.org/license/mit",
+  "theme_version": "1.0.0",
+  "modifiers": {
+    "svg_icons": ["arrow-right", "star", "trophy"]
+  }
+}
